@@ -3,17 +3,12 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as operation from 'redux/operation';
 //формік і валідація
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, Field, ErrorMessage, Form } from 'formik';
 import * as yup from 'yup';
-//стилі
-import {
-  Field,
-  Label,
-  ButtonAddContacts,
-  Form,
-} from '../ContactForm/ContactForm.styled.js';
+
 import { getContacts } from 'redux/selectors.js';
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
+
 //початкові значення форміка
 const initialValues = { name: '', number: '' };
 
@@ -29,18 +24,12 @@ export const ContactForm = () => {
       contact => contact.name.toLowerCase() === values.name.toLowerCase()
     );
     //повідомлення користувача
-      if (haveNameInPhonebook) {
-        return toast.error(`${values.name} is already in contacts`)(
-        
-          {    
-            duration: 1000,
-            position: 'top-center',
-          }
-        );
+    if (haveNameInPhonebook) {
+      return toast.error(`${values.name} is already in contacts`)({
+        duration: 1000,
+        position: 'top-center',
+      });
       // Notify.failure(`${values.name} is already in contacts`);
-      
-      
-      
     }
     // виклик диспечера для відправки даних в редакс
     dispatch(
@@ -64,17 +53,16 @@ export const ContactForm = () => {
       onSubmit={handleSabmit}
     >
       <Form>
-        <Label htmlFor="name">Name</Label>
+        <label htmlFor="name">Name</label>
         <Field name="name" type="name" />
         <ErrorMessage name="name" component="div" />
 
-        <Label htmlFor="number">Number</Label>
+        <label htmlFor="number">Number</label>
         <Field name="number" type="tel" />
         <ErrorMessage name="number" component="div" />
 
-        <ButtonAddContacts type="submit">add contacts</ButtonAddContacts>
+        <button type="submit">add contacts</button>
       </Form>
-      
     </Formik>
   );
 };
