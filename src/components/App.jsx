@@ -38,8 +38,8 @@ export const App = () => {
           {isLoading && !error && (
             <Radio
               visible={true}
-              height="280"
-              width="280"
+              height="200"
+              width="200"
               ariaLabel="radio-loading"
               wrapperStyle={{}}
               wrapperClass="radio-wrapper"
@@ -59,7 +59,7 @@ export const App = () => {
       )}
       <div>
         <ToastContainer
-          position="top-left"
+          position="top-right"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}

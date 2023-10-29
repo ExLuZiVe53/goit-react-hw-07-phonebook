@@ -33,7 +33,7 @@ export const ContactList = () => {
     <ul>
       {visibleFilter.map(contact => (
         <li key={contact.id}>
-          {contact.name}: {contact.number}{' '}
+          <span>{contact.name}</span> -- <span>{contact.number}</span>{' '}
           <button onClick={() => handleDelete(contact.id, contact.name)}>
             Delete
           </button>
