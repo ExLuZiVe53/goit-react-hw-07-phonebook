@@ -13,10 +13,10 @@ export const fetchContacts = createAsyncThunk(
       );
 
       return contacts.data;
-    } catch (err) {
+    } catch (error) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
-      return rejectWithValue(err.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -49,10 +49,10 @@ export const addContact = createAsyncThunk(
         position: 'top-right',
       });
       return contact.data;
-    } catch (err) {
+    } catch (error) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
-      return rejectWithValue(err);
+      return rejectWithValue(error);
     }
   }
 );

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filter } from 'redux/filtersSlise.js';
 
+import css from './Filter.module.css';
+
 export const Filter = () => {
   const dispatch = useDispatch();
   //стейт для фільтра
@@ -14,16 +16,16 @@ export const Filter = () => {
   };
 
   return (
-    <div>
-      <label htmlFor="">
-        Find contacts by name
-        <input
-          name="filter"
-          type="text"
-          value={filterok}
-          onChange={handleFind}
-        />
-      </label>
+    <div className={css.FilterWrap}>
+      <label htmlFor="">Find contacts by name</label>
+      <input
+        className={css.FilterInput}
+        name="filter"
+        type="text"
+        value={filterok}
+        onChange={handleFind}
+        placeholder="Find with me"
+      />
     </div>
   );
 };

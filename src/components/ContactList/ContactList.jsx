@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as operation from 'redux/operation';
 import { getContacts } from 'redux/selectors.js';
 //styled
+import css from './ContactList.module.css';
 
 export const ContactList = () => {
   //значення стору редакс
@@ -25,16 +26,20 @@ export const ContactList = () => {
   const visibleFilter = getVisibleContacts(items, filters);
 
   //видалення контакту по айди
-  const handleDelete = (id, name) => {
-    dispatch(operation.removeContact({ id, name }));
+  const handleDelete = id => {
+    dispatch(operation.removeContact({ id }));
   };
 
   return (
-    <ul>
+    <ul className={css.ContactUl}>
       {visibleFilter.map(contact => (
-        <li key={contact.id}>
-          <span>{contact.name}</span> -- <span>{contact.number}</span>{' '}
-          <button onClick={() => handleDelete(contact.id, contact.name)}>
+        <li className={css.ContactItem} key={contact.id}>
+          <span className={css.ContactName}>{contact.name}</span> --
+          <span className={css.ContactNumber}>{contact.phone}</span>
+          <button
+            className={css.delete}
+            onClick={() => handleDelete(contact.id)}
+          >
             Delete
           </button>
         </li>

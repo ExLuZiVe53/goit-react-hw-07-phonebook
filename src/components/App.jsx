@@ -11,6 +11,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Radio } from 'react-loader-spinner';
+
+import css from './App.module.css';
 export const App = () => {
   const { items, isLoading, error } = useSelector(getContacts);
 
@@ -21,6 +23,7 @@ export const App = () => {
 
   return (
     <div
+
     // style={{
     //   display: 'flex',
     //   justifyContent: 'center',
@@ -32,7 +35,7 @@ export const App = () => {
       {error ? (
         <h3>{error}</h3>
       ) : (
-        <div>
+        <div className={css.Wrapper}>
           <h1>Phonebook</h1>
           <ContactForm />
           {isLoading && !error && (
