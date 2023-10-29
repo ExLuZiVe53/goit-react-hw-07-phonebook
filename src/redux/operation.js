@@ -1,50 +1,17 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
-// import toast from 'react-hot-toast';
-// import * as ContactAPI from './ContactAPI';
-// import {
-//   fetchContactsRequest,
-//   fetchContactsSuccess,
-//   fetchContactsError,
-// } from './contactsSlise.js';
-
-// export const fetchContacts = () => async dispatch => {
-//   dispatch(fetchContactsRequest());
-
-//   try {
-//     const contacts = await axios.get(
-//       'https://64abd7fe9edb4181202ea786.mockapi.io/phonenbook/v1/contacts'
-//     );
-//     dispatch(fetchContactsSuccess(contacts.data));
-//   }
-//   catch (error) {
-//     dispatch(fetchContactsError(error));
-//   }
-// };
+import { toast } from 'react-toastify';
 
 // import axios from 'axios';
-  const optToast = {
-    duration: 2000,
-    position: 'top-center',
-    // Styling
-    style: {
-      fontSize: "20px"
-    },
-    className: '',
-    // Custom Icon
-    icon: '❌'
-  }
-
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
-  async (_, {rejectWithValue}) => {
+  async (_, { rejectWithValue }) => {
     try {
       const contacts = await axios.get(
-        'https://64abd7fe9edb4181202ea786.mockapi.io/phonenbook/v1/contacts'
+        'https://653d32f6f52310ee6a99fb6f.mockapi.io/contacts'
       );
-    
+
       return contacts.data;
     } catch (err) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
@@ -52,37 +19,34 @@ export const fetchContacts = createAsyncThunk(
       return rejectWithValue(err.message);
     }
   }
-  
 );
 
 export const removeContact = createAsyncThunk(
   'contacts/removeContact',
-  async ({id, name}, { rejectWithValue }) => {
+  async ({ id, name }, { rejectWithValue }) => {
     try {
       const contact = await axios.delete(
-        `https://64abd7fe9edb4181202ea786.mockapi.io/phonenbook/v1/contacts/${id}`
+        `https://653d32f6f52310ee6a99fb6f.mockapi.io/contacts/${id}`
       );
-      toast(`${name} has deleted`, optToast); 
+      toast(`${name} has deleted`, toast.warn);
       return contact.data;
-    } catch (err) {
-      // Use `err.response.data` as `action.payload` for a `rejected` action,
-      // by explicitly returning it using the `rejectWithValue()` utility
-      return rejectWithValue(err);
+    } catch (error) {
+      return rejectWithValue(error);
     }
   }
 );
-  
+
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (newContact, { rejectWithValue }) => {
     try {
       const contact = await axios.post(
-        'https://64abd7fe9edb4181202ea786.mockapi.io/phonenbook/v1/contacts',
+        'https://653d32f6f52310ee6a99fb6f.mockapi.io/contacts',
         newContact
       );
-            toast.success(`${newContact.name} add to phonebook`,{
+      toast.success(`${newContact.name} add to phonebook`, {
         duration: 2000,
-        position: 'top-center',
+        position: 'top-right',
       });
       return contact.data;
     } catch (err) {
