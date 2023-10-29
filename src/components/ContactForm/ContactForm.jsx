@@ -77,44 +77,5 @@ export const ContactForm = () => {
         </button>
       </Form>
     </Formik>
-
-    // <form className={css.FormWrapper} onSubmit={handleSabmit}>
-    //   <div>
-    //     <label className={css.FormLabel} htmlFor="name">
-    //       Name
-    //     </label>
-    //     <input
-    //       type="text"
-    //       name="name"
-    //       pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-    //       title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    //       required
-    //       onChange={handleChange}
-    //       value={name}
-    //       className={css.FormInput}
-    //       placeholder="Enter your name"
-    //     />
-    //   </div>
-
-    //   <div>
-    //     <label className={css.FormLabel} htmlFor="number">
-    //       Number
-    //     </label>
-    //     <input
-    //       type="tel"
-    //       name="number"
-    //       pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-    //       title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-    //       required
-    //       onChange={handleChange}
-    //       value={number}
-    //       className={css.FormInput}
-    //       placeholder="Enter your number"
-    //     />
-    //   </div>
-    //   <button className={css.ButtonForm} type="submit">
-    //     add contacts
-    //   </button>
-    // </form>
   );
 };

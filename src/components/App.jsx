@@ -10,7 +10,7 @@ import { ContactList } from './ContactList/ContactList.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Radio } from 'react-loader-spinner';
+import { Triangle } from 'react-loader-spinner';
 
 import css from './App.module.css';
 export const App = () => {
@@ -39,13 +39,14 @@ export const App = () => {
           <h1>Phonebook</h1>
           <ContactForm />
           {isLoading && !error && (
-            <Radio
-              visible={true}
+            <Triangle
               height="200"
               width="200"
-              ariaLabel="radio-loading"
+              color="#4fa94d"
+              ariaLabel="triangle-loading"
               wrapperStyle={{}}
-              wrapperClass="radio-wrapper"
+              wrapperClassName=""
+              visible={true}
             />
           )}
           {items[0] ? (
