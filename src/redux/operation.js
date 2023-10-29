@@ -31,7 +31,7 @@ export const removeContact = createAsyncThunk(
       toast(`${name} has deleted`, toast.warn);
       return contact.data;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -46,13 +46,13 @@ export const addContact = createAsyncThunk(
       );
       toast.success(`${newContact.name} add to phonebook`, {
         duration: 2000,
-        position: 'top-right',
+        position: 'top-left',
       });
       return contact.data;
     } catch (error) {
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   }
 );
